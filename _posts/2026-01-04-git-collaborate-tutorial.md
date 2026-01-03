@@ -32,7 +32,9 @@ git status
 ```
 - `add` 之後會變成綠色
 - 還沒 `add` 的是黃色
+
 ![](../assets/images/0_status-file-explore.png)
+
 3. 完成目前工作，合併進度
 
 ```sh
