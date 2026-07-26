@@ -165,3 +165,32 @@ A couple of small details that make the theme feel coherent rather than just "re
 - **Theme-switch transitions are global**, not just on `body` — every element transitions `background-color`/`border-color`/`color` over 0.15s, so toggling dark/light fades uniformly instead of some elements snapping instantly while others fade.
 - **Code block background is a step brighter than page background** in light mode (`#f0e9da` vs `#f7f1e4`), separated further by a 1px border — enough to read as a distinct block without going murky.
 - Math-heavy posts (`math: true` in front matter) load [KaTeX](https://katex.org/) from a CDN with self-verified SRI hashes, gated so it never loads on pages that don't need it — paired with Goldmark's `passthrough` extension so `$...$` math isn't mangled by Markdown's own typography rules first.
+
+## 5. Deploying to GitHub Pages
+
+GitHub Actions runs on a fresh Ubuntu VM with no access to my Mac or the Obsidian vault, so the module-mount trick from section 2 only works for local `hugo server`. Config is split by environment:
+
+- `config/_default/hugo.toml` — no vault mount; `content/posts` is a real, git-tracked directory
+- `config/development/hugo.toml` — overrides the mount back to the vault, applied automatically whenever `hugo server` runs (Hugo defaults to the `development` environment for `server`, `production` for `build`)
+
+### Publish
+
+Publishing a post is now an explicit step, not automatic:
+
+```bash
+./scripts/sync-posts.sh    # rsync mirror: vault -> content/posts/
+git status content/posts   # review what changed
+git add content/posts
+git commit -m "..."
+git push
+```
+
+### Deploy
+
+Push to `main` triggers `.github/workflows/hugo.yaml` (Hugo's official Actions workflow), which builds with `hugo build --gc --minify` and deploys via `actions/deploy-pages`. Pages' source is set to **GitHub Actions** (Settings → Pages → Source), not a branch, so there's no `gh-pages` branch to manage.
+
+> [!TIP]
+> After a deploy, GitHub's edge CDN refreshes almost immediately (`cache-control: max-age=600`, so worst case ~10 minutes) — but the **browser** may still show a stale cached copy well after that. Don't wait it out, hard refresh instead:
+> - macOS Chrome/Firefox/Edge: `Cmd+Shift+R`
+> - macOS Safari: `Cmd+Option+R` (or Develop → Empty Caches)
+> - Or just open the URL in a private/incognito window
