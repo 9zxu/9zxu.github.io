@@ -1,0 +1,22 @@
+{{- /*
+Renders a list of post cards: date, title, 20-word peek.
+
+@context {[]page} . The pages to list.
+*/}}
+<ul class="card-list">
+  {{ range . }}
+    {{ $words := split .Plain " " }}
+    <li class="card">
+      {{ if not .Date.IsZero }}<time datetime="{{ .Date | time.Format "2006-01-02" }}">{{ .Date | time.Format ":date_long" }}</time>{{ end }}
+      <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+      <p class="card__peek">{{ delimit (first 20 $words) " " }}{{ if gt (len $words) 20 }}&hellip;{{ end }}</p>
+      {{ with .GetTerms "tags" }}
+        <div class="card__tags">
+          {{ range . }}
+            <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+          {{ end }}
+        </div>
+      {{ end }}
+    </li>
+  {{ end }}
+</ul>

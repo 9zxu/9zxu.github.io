@@ -1,0 +1,23 @@
+{{- /* GitHub-style alert blockquotes: > [!NOTE] / [!TIP] / [!IMPORTANT] / [!WARNING] / [!CAUTION] */}}
+{{- if eq .Type "alert" }}
+  {{- $title := .AlertTitle }}
+  {{- if not $title }}{{ $title = title .AlertType }}{{ end }}
+  {{- $icons := dict
+    "note" "<circle cx=\"12\" cy=\"12\" r=\"9\"/><line x1=\"12\" y1=\"8\" x2=\"12\" y2=\"12\"/><line x1=\"12\" y1=\"16\" x2=\"12.01\" y2=\"16\"/>"
+    "tip" "<path d=\"M9 18h6M10 22h4M12 2a6 6 0 0 0-4 10.4c.6.5 1 1.3 1 2.1V16h6v-1.5c0-.8.4-1.6 1-2.1A6 6 0 0 0 12 2z\"/>"
+    "important" "<path d=\"M12 2 2 20h20L12 2z\"/><line x1=\"12\" y1=\"9\" x2=\"12\" y2=\"14\"/><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"/>"
+    "warning" "<path d=\"M12 2 2 20h20L12 2z\"/><line x1=\"12\" y1=\"9\" x2=\"12\" y2=\"14\"/><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"/>"
+    "caution" "<circle cx=\"12\" cy=\"12\" r=\"9\"/><line x1=\"12\" y1=\"8\" x2=\"12\" y2=\"12\"/><line x1=\"12\" y1=\"16\" x2=\"12.01\" y2=\"16\"/>"
+  }}
+  <div class="callout callout--{{ .AlertType }}">
+    <svg class="callout__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{{ (index $icons .AlertType) | safeHTML }}</svg>
+    <div class="callout__body">
+      <p class="callout__title">{{ $title }}</p>
+      {{ .Text }}
+    </div>
+  </div>
+{{- else }}
+  <blockquote{{ with .Attributes.class }} class="{{ . }}"{{ end }}>
+    {{ .Text }}
+  </blockquote>
+{{- end }}

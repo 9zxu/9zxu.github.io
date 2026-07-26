@@ -1,0 +1,61 @@
+/*
+ * Semantic tokens — the abstraction layer between the raw palette
+ * (_palette.css) and every other stylesheet in the theme.
+ * No hex codes here, only var() references to --ef-* variables.
+ */
+
+:root {
+  /* surfaces */
+  --color-bg: var(--ef-bg0);
+  --color-bg-subtle: var(--ef-bg-dim);
+  --color-surface: var(--ef-bg1);
+  --color-surface-raised: var(--ef-bg2);
+
+  /* borders */
+  --color-border: var(--ef-bg3);
+  --color-border-strong: var(--ef-bg4);
+
+  /* text */
+  --color-text: var(--ef-fg);
+  --color-text-muted: var(--ef-grey2);
+  --color-text-faint: var(--ef-grey1);
+
+  /* interactive */
+  --color-link: var(--ef-fg);
+  --color-link-hover: var(--ef-green);
+  --color-accent: var(--ef-green);
+  --color-accent-strong: var(--ef-aqua);
+  --color-focus-ring: var(--ef-blue);
+
+  /* callouts */
+  --callout-note: var(--ef-blue);
+  --callout-note-bg: var(--ef-bg-blue);
+  --callout-tip: var(--ef-green);
+  --callout-tip-bg: var(--ef-bg-green);
+  --callout-important: var(--ef-purple);
+  --callout-important-bg: var(--ef-bg-purple);
+  --callout-warning: var(--ef-yellow);
+  --callout-warning-bg: var(--ef-bg-yellow);
+  --callout-caution: var(--ef-red);
+  --callout-caution-bg: var(--ef-bg-red);
+
+  /* code */
+  --color-code-bg: var(--ef-bg1);
+  --color-code-border: var(--ef-bg3);
+  --color-inline-code-bg: var(--ef-bg2);
+
+  /* syntax highlighting */
+  --syntax-keyword: var(--ef-red);
+  --syntax-string: var(--ef-green);
+  --syntax-comment: var(--ef-grey1);
+  --syntax-function: var(--ef-blue);
+  --syntax-number: var(--ef-purple);
+  --syntax-type: var(--ef-yellow);
+  --syntax-operator: var(--ef-orange);
+  --syntax-variable: var(--ef-fg);
+  --syntax-builtin: var(--ef-aqua);
+  --syntax-attr: var(--ef-yellow);
+  --syntax-tag: var(--ef-red);
+  --syntax-punctuation: var(--ef-grey2);
+  --syntax-error: var(--ef-red);
+}

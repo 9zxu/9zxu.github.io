@@ -1,0 +1,75 @@
+/*
+ * "Shibui" palette — a quiet, muted ink & washi-paper color scheme.
+ * Dark = "Sumi" (ink on charcoal). Light = "Washi" (rice paper).
+ * All accent colors are tuned for >=5:1 contrast against the code-block
+ * background in their respective theme.
+ *
+ * THIS IS THE ONLY FILE IN THE THEME ALLOWED TO CONTAIN RAW HEX COLORS.
+ * Every other stylesheet must reference the semantic tokens defined in
+ * _tokens.css, never a --ef-* variable or a hex code directly.
+ *
+ * The previous Everforest palette is kept, unused, in
+ * _palette-everforest.css for reference/rollback.
+ */
+
+:root {
+  /* backgrounds */
+  --ef-bg-dim: #1c1a17;
+  --ef-bg0: #26231f;
+  --ef-bg1: #2d2a25;
+  --ef-bg2: #34302a;
+  --ef-bg3: #3c3730;
+  --ef-bg4: #453f37;
+  --ef-bg-visual: #3a3228;
+  --ef-bg-red: #3a2b26;
+  --ef-bg-yellow: #362f22;
+  --ef-bg-green: #2e3325;
+  --ef-bg-blue: #253034;
+  --ef-bg-purple: #322b34;
+
+  /* foreground + greys */
+  --ef-fg: #d8cfc0;
+  --ef-grey0: #776f61;
+  --ef-grey1: #a39a8c;
+  --ef-grey2: #beb4a4;
+
+  /* accents */
+  --ef-red: #d9846f;
+  --ef-orange: #d3a066;
+  --ef-yellow: #cbb573;
+  --ef-green: #a3b088;
+  --ef-aqua: #8fb0a0;
+  --ef-blue: #83a6c4;
+  --ef-purple: #b39bcf;
+}
+
+:root[data-theme='light'] {
+  /* backgrounds */
+  --ef-bg-dim: #ece4d3;
+  --ef-bg0: #f7f1e4;
+  --ef-bg1: #f0e9da;
+  --ef-bg2: #e9e1cd;
+  --ef-bg3: #ddd3ba;
+  --ef-bg4: #d0c4a8;
+  --ef-bg-visual: #e6ddc4;
+  --ef-bg-red: #f5e0da;
+  --ef-bg-yellow: #f2e8c9;
+  --ef-bg-green: #e8ecd6;
+  --ef-bg-blue: #dfe9ec;
+  --ef-bg-purple: #ece1ee;
+
+  /* foreground + greys */
+  --ef-fg: #3d3a34;
+  --ef-grey0: #9a9184;
+  --ef-grey1: #656355;
+  --ef-grey2: #5a5246;
+
+  /* accents */
+  --ef-red: #a24632;
+  --ef-orange: #805c1c;
+  --ef-yellow: #71621b;
+  --ef-green: #546935;
+  --ef-aqua: #336c64;
+  --ef-blue: #37648a;
+  --ef-purple: #725693;
+}

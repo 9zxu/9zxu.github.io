@@ -1,0 +1,28 @@
+{{- /*
+Renders a GitHub profile card, fetched from the GitHub REST API at build
+time via resources.GetRemote (cached across builds by Hugo).
+
+@context {string} . The GitHub username to look up.
+*/}}
+{{- $username := . }}
+{{- with try (resources.GetRemote (printf "https://api.github.com/users/%s" $username)) }}
+  {{- with .Err }}
+    {{- warnf "github-card: could not fetch profile for %q: %s" $username . }}
+  {{- else with .Value }}
+    {{- $data := . | transform.Unmarshal }}
+    <a class="github-card" href="{{ $data.html_url }}" target="_blank" rel="noopener noreferrer">
+      <img class="github-card__avatar" src="{{ $data.avatar_url }}" alt="" width="72" height="72" loading="lazy">
+      <div class="github-card__body">
+        <p class="github-card__name">{{ or $data.name $data.login }}</p>
+        <p class="github-card__login">@{{ $data.login }}</p>
+        {{- with $data.bio }}
+          <p class="github-card__bio">{{ . }}</p>
+        {{- end }}
+        <div class="github-card__stats">
+          <span>{{ $data.public_repos }} repos</span>
+          <span>{{ $data.followers }} followers</span>
+        </div>
+      </div>
+    </a>
+  {{- end }}
+{{- end }}

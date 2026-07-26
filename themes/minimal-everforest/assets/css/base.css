@@ -1,0 +1,93 @@
+/* Reset + base typography */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    color 0.15s ease, fill 0.15s ease, stroke 0.15s ease;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none;
+  }
+}
+
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-text);
+  scroll-margin-top: 5rem;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+    'Liberation Mono', monospace;
+  font-size: 0.875em;
+}
+
+code {
+  background: var(--color-inline-code-bg);
+  border-radius: 4px;
+  padding: 0.15em 0.4em;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg-subtle);
+}

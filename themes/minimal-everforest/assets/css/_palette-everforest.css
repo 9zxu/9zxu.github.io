@@ -1,0 +1,69 @@
+/*
+ * Everforest palette (medium contrast) — https://github.com/sainnhe/everforest
+ *
+ * BACKUP — not imported by main.css. Kept for reference in case the theme
+ * ever wants to switch back from the "shibui" palette in _palette.css.
+ * If restored as the live palette, it must again be the only file with hex.
+ */
+
+:root {
+  /* backgrounds */
+  --ef-bg-dim: #232a2e;
+  --ef-bg0: #2d353b;
+  --ef-bg1: #343f44;
+  --ef-bg2: #3d484d;
+  --ef-bg3: #475258;
+  --ef-bg4: #4f585e;
+  --ef-bg-visual: #543a48;
+  --ef-bg-red: #514045;
+  --ef-bg-yellow: #4d4c43;
+  --ef-bg-green: #425047;
+  --ef-bg-blue: #3a515d;
+  --ef-bg-purple: #4a444e;
+
+  /* foreground + greys */
+  --ef-fg: #d3c6aa;
+  --ef-grey0: #7a8478;
+  --ef-grey1: #859289;
+  --ef-grey2: #9da9a0;
+
+  /* accents */
+  --ef-red: #e67e80;
+  --ef-orange: #e69875;
+  --ef-yellow: #dbbc7f;
+  --ef-green: #a7c080;
+  --ef-aqua: #83c092;
+  --ef-blue: #7fbbb3;
+  --ef-purple: #d699b6;
+}
+
+:root[data-theme='light'] {
+  /* backgrounds */
+  --ef-bg-dim: #efebd4;
+  --ef-bg0: #fdf6e3;
+  --ef-bg1: #f4f0d9;
+  --ef-bg2: #efebd4;
+  --ef-bg3: #e6e2cc;
+  --ef-bg4: #e0dcc7;
+  --ef-bg-visual: #eaedc8;
+  --ef-bg-red: #fde3da;
+  --ef-bg-yellow: #faedcd;
+  --ef-bg-green: #f0f1d2;
+  --ef-bg-blue: #e9f0e9;
+  --ef-bg-purple: #fae8e2;
+
+  /* foreground + greys */
+  --ef-fg: #5c6a72;
+  --ef-grey0: #a6b0a0;
+  --ef-grey1: #939f91;
+  --ef-grey2: #829181;
+
+  /* accents */
+  --ef-red: #f85552;
+  --ef-orange: #f57d26;
+  --ef-yellow: #dfa000;
+  --ef-green: #8da101;
+  --ef-aqua: #35a77c;
+  --ef-blue: #3a94c5;
+  --ef-purple: #df69ba;
+}

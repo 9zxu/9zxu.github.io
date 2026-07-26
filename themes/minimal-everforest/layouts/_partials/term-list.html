@@ -1,0 +1,13 @@
+{{- /*
+Renders a list of taxonomy terms as cards: term name, post count.
+
+@context {[]page} . The term pages to list (e.g. .Pages on a taxonomy page).
+*/}}
+<ul class="card-list">
+  {{ range . }}
+    <li class="card">
+      <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+      <p class="card__peek">{{ len .Pages }} post{{ if ne (len .Pages) 1 }}s{{ end }}</p>
+    </li>
+  {{ end }}
+</ul>

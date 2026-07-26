@@ -1,0 +1,10 @@
+{{ define "main" }}
+  <div class="article-header">
+    <h1>{{ .Title }}</h1>
+  </div>
+  <div class="prose">
+    {{ .Content }}
+  </div>
+
+  {{ partial "term-list.html" .Pages }}
+{{ end }}

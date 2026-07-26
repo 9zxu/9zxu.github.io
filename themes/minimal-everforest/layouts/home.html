@@ -1,0 +1,23 @@
+{{ define "main" }}
+  <div class="prose">
+    {{ .Content }}
+  </div>
+
+  {{ with site.Params.githubUsername }}
+    {{ partial "github-card.html" . }}
+  {{ end }}
+
+  {{ with site.GetPage "/posts" }}
+    <p><a href="{{ .RelPermalink }}">Read my posts &rarr;</a></p>
+  {{ end }}
+
+  {{ with site.GetPage "/tags" }}
+    {{ with .Pages }}
+      <div class="tags">
+        {{ range . }}
+          <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        {{ end }}
+      </div>
+    {{ end }}
+  {{ end }}
+{{ end }}

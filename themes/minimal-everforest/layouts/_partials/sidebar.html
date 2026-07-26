@@ -1,0 +1,12 @@
+{{- /*
+Left sidebar: an "On this page" outline of the current page's headings.
+Home is reachable via the top-bar brand link, so no site menu here.
+
+@context {page} . The current page.
+*/}}
+{{- with .Fragments.Headings }}
+  <nav class="toc">
+    <p class="toc__title">On this page</p>
+    {{ $.TableOfContents }}
+  </nav>
+{{- end }}

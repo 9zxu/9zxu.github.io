@@ -1,0 +1,67 @@
+baseURL = 'https://example.org/'
+locale = 'en-us'
+title = "zxu's home"
+theme = 'minimal-everforest'
+
+[params]
+  githubUsername = '9zxu'
+
+# Declaring any module mount disables Hugo's implicit default mounts for this
+# module, so the usual directories must be re-declared explicitly alongside
+# the external one (posts live in the Obsidian vault, not in this repo).
+[module]
+  [[module.mounts]]
+    source = 'content'
+    target = 'content'
+  [[module.mounts]]
+    source = '/Users/grace/Vaults/CS/blog'
+    target = 'content/posts'
+  [[module.mounts]]
+    source = 'static'
+    target = 'static'
+  [[module.mounts]]
+    source = 'layouts'
+    target = 'layouts'
+  [[module.mounts]]
+    source = 'data'
+    target = 'data'
+  [[module.mounts]]
+    source = 'assets'
+    target = 'assets'
+  [[module.mounts]]
+    source = 'i18n'
+    target = 'i18n'
+  [[module.mounts]]
+    source = 'archetypes'
+    target = 'archetypes'
+
+[menus]
+  [[menus.main]]
+    name = 'Home'
+    pageRef = '/'
+    weight = 10
+
+  [[menus.main]]
+    name = 'Posts'
+    pageRef = '/posts'
+    weight = 20
+
+[markup.highlight]
+  noClasses = false
+  lineNos = false
+  tabWidth = 2
+
+[markup.goldmark.parser.attribute]
+  block = true
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+# Leaves math delimiters untouched so LaTeX (e.g. "v_1...v_m") isn't mangled
+# by Markdown parsing (italics from "_", ellipsis from "...", etc.) before
+# KaTeX ever sees it.
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['\[', '\]'], ['$$', '$$']]
+    inline = [['\(', '\)'], ['$', '$']]
