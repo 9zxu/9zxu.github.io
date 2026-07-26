@@ -35,7 +35,7 @@ git status
 - `add` 之後會變成綠色
 - 還沒 `add` 的是黃色
 
-![](../assets/images/0_status-file-explore.png)
+![git status showing staged files in green, unstaged in yellow](/images/git-collaborate-tutorial/0_status-file-explore.png)
 
 3. 完成目前工作，合併進度
 
@@ -58,7 +58,7 @@ git commit -m "fix conflicts and update"
 git push origin <你的branch名字>
 ```
 !!!接下來去 GitHub 網頁開 Pull Request，請求merge到main
-![](../assets/images/0_pull-request.png)
+![Opening a pull request on GitHub](/images/git-collaborate-tutorial/0_pull-request.png)
 
 4. 還沒完成目前工作，但要換到別的branch去修bug
 
@@ -87,12 +87,12 @@ git stash pop
 ### How to start
 #### clone the repo
 - where is the link
-![](../assets/images/0_clone-link.png)
+![Finding the repo's clone link on GitHub](/images/git-collaborate-tutorial/0_clone-link.png)
 - by command line
-![](../assets/images/0_clone-command.png)
+![Cloning a repo via the command line](/images/git-collaborate-tutorial/0_clone-command.png)
 - in ide
-![](../assets/images/0_clone-ide.png)
+![Cloning a repo from within an IDE](/images/git-collaborate-tutorial/0_clone-ide.png)
 #### add source file
 - eg.template file
-![](../assets/images/0_add-file.png)
-![](../assets/images/0_add-file-commit.png)
+![Adding a new source file](/images/git-collaborate-tutorial/0_add-file.png)
+![Committing the newly added file](/images/git-collaborate-tutorial/0_add-file-commit.png)
