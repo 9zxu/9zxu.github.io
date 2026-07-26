@@ -3,7 +3,7 @@ date: '2026-01-04T00:00:00+08:00'
 draft: false
 title: 'GitHub Collaboration Tutorial'
 categories: ['Tutorial']
-tags: ['cli']
+tags: ['Git', 'GitHub', 'CLI', 'Collaboration']
 ---
 
 # github collaborate tutorial

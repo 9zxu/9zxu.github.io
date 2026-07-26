@@ -3,7 +3,7 @@ date: '2025-12-01T00:00:00+08:00'
 draft: false
 title: 'Linear Algebra'
 categories: ['Note']
-tags: ['Math']
+tags: ['Linear Algebra', 'Math']
 math: true
 ---
 
