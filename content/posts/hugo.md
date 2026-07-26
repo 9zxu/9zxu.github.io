@@ -125,6 +125,9 @@ themes/sumi-washi/
 
 The theme started on the [Everforest](https://github.com/sainnhe/everforest) colorscheme, but its light-theme accent colors turned out too low-contrast for real reading (several syntax colors measured under 3:1 against the code background — WCAG AA wants 4.5:1). Rather than patch individual colors, I designed a full replacement palette: **Shibui** (渋い) — a quiet, muted ink-and-paper aesthetic instead of a saturated one. The old Everforest values are kept, unused, in `_palette-everforest.css` for reference.
 
+> [!NOTE]
+> The name (and general "quiet, muted" direction) was also inspired by the existing [Shibui Hugo theme](https://themes.gohugo.io/themes/shibui/) — this palette and that theme are unrelated in code, but credit where it's due for the name.
+
 Two variants, keyed off `:root` vs `:root[data-theme='light']`, exactly like Everforest was:
 
 **Dark — "Sumi" (ink on charcoal)**
