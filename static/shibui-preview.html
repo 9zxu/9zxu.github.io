@@ -1,0 +1,132 @@
+<title>Shibui palette proposal</title>
+<style>
+  :root {
+    --sh-d-bgdim:#1c1a17; --sh-d-bg0:#26231f; --sh-d-bg1:#2d2a25; --sh-d-bg2:#34302a;
+    --sh-d-bg3:#3c3730; --sh-d-bg4:#453f37;
+    --sh-d-fg:#d8cfc0; --sh-d-grey0:#776f61; --sh-d-grey1:#a39a8c; --sh-d-grey2:#beb4a4;
+    --sh-d-red:#d9846f; --sh-d-orange:#d3a066; --sh-d-yellow:#cbb573; --sh-d-green:#a3b088;
+    --sh-d-aqua:#8fb0a0; --sh-d-blue:#83a6c4; --sh-d-purple:#b39bcf;
+
+    --sh-l-bgdim:#ece4d3; --sh-l-bg0:#f7f1e4; --sh-l-bg1:#f0e9da; --sh-l-bg2:#e9e1cd;
+    --sh-l-bg3:#ddd3ba; --sh-l-bg4:#d0c4a8;
+    --sh-l-fg:#3d3a34; --sh-l-grey0:#9a9184; --sh-l-grey1:#656355; --sh-l-grey2:#5a5246;
+    --sh-l-red:#a24632; --sh-l-orange:#805c1c; --sh-l-yellow:#71621b; --sh-l-green:#546935;
+    --sh-l-aqua:#336c64; --sh-l-blue:#37648a; --sh-l-purple:#725693;
+
+    color-scheme: light dark;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 2rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #14130f; color: #e5ded0;
+  }
+  h1 { font-size: 1.4rem; margin: 0 0 0.25rem; }
+  .sub { color: #a39a8c; margin: 0 0 2rem; font-size: 0.95rem; }
+  .panes { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  @media (max-width: 900px) { .panes { grid-template-columns: 1fr; } }
+  .pane { border-radius: 12px; padding: 1.5rem; }
+  .pane h2 { margin: 0 0 1rem; font-size: 1.05rem; }
+
+  .dark   { background: var(--sh-d-bg0); color: var(--sh-d-fg); border: 1px solid var(--sh-d-bg3); }
+  .light  { background: var(--sh-l-bg0); color: var(--sh-l-fg); border: 1px solid var(--sh-l-bg3); }
+
+  .swatches { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+  .swatch { width: 64px; text-align: center; font-size: 0.65rem; }
+  .swatch .chip { height: 40px; border-radius: 6px; margin-bottom: 0.25rem; border: 1px solid rgba(0,0,0,0.15); }
+
+  pre {
+    margin: 0; padding: 1rem 1.1rem; border-radius: 8px; overflow-x: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.85rem; line-height: 1.6;
+  }
+  .dark pre { background: var(--sh-d-bg1); border: 1px solid var(--sh-d-bg3); }
+  .light pre { background: var(--sh-l-bg1); border: 1px solid var(--sh-l-bg3); }
+
+  .kw-d{color:var(--sh-d-red)} .str-d{color:var(--sh-d-green)} .cm-d{color:var(--sh-d-grey1);font-style:italic}
+  .fn-d{color:var(--sh-d-blue)} .num-d{color:var(--sh-d-purple)} .ty-d{color:var(--sh-d-yellow)} .op-d{color:var(--sh-d-orange)}
+
+  .kw-l{color:var(--sh-l-red)} .str-l{color:var(--sh-l-green)} .cm-l{color:var(--sh-l-grey1);font-style:italic}
+  .fn-l{color:var(--sh-l-blue)} .num-l{color:var(--sh-l-purple)} .ty-l{color:var(--sh-l-yellow)} .op-l{color:var(--sh-l-orange)}
+
+  a.link-d { color: var(--sh-d-fg); text-decoration: underline; text-underline-offset: 2px; }
+  a.link-d:hover { color: var(--sh-d-green); }
+  a.link-l { color: var(--sh-l-fg); text-decoration: underline; text-underline-offset: 2px; }
+  a.link-l:hover { color: var(--sh-l-green); }
+
+  table.contrast { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 1.25rem; }
+  table.contrast th, table.contrast td { text-align: left; padding: 0.3rem 0.5rem; }
+  .dark table.contrast th, .dark table.contrast td { border-top: 1px solid var(--sh-d-bg3); }
+  .light table.contrast th, .light table.contrast td { border-top: 1px solid var(--sh-l-bg3); }
+  .ok { color: var(--sh-d-green); }
+  .light .ok { color: var(--sh-l-green); }
+</style>
+
+<h1>Shibui (渋い) — a quiet, muted alternative palette</h1>
+<p class="sub">Ink &amp; washi paper family — sumi ink, kaki persimmon, kohaku amber, kihada turmeric, matcha, ai indigo, fuji wisteria. All accent colors tuned to ≥4.5:1 contrast against their code-block background. Kept alongside the existing Everforest palette, not replacing it, until you approve.</p>
+
+<div class="panes">
+  <div class="pane dark">
+    <h2>Dark — "Sumi"</h2>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:var(--sh-d-bg0)"></div>bg0</div>
+      <div class="swatch"><div class="chip" style="background:var(--sh-d-bg1)"></div>bg1</div>
+      <div class="swatch"><div class="chip" style="background:var(--sh-d-fg)"></div>fg</div>
+      <div class="swatch"><div class="chip" style="background:var(--sh-d-red)"></div>red</div>
+      <div class="swatch"><div class="chip" style="background:var(--sh-d-orange)"></div>orange</div>
+      <div class="swatch"><div class="chip" style="background:var(--sh-d-yellow)"></div>yellow</div>
+      <div class="swatch"><div class="chip" style="background:var(--sh-d-green)"></div>green</div>
+      <div class="swatch"><div class="chip" style="background:var(--sh-d-aqua)"></div>aqua</div>
+      <div class="swatch"><div class="chip" style="background:var(--sh-d-blue)"></div>blue</div>
+      <div class="swatch"><div class="chip" style="background:var(--sh-d-purple)"></div>purple</div>
+    </div>
+    <p>Body text and a <a class="link-d" href="#">sample link, hover me</a>.</p>
+    <pre><span class="cm-d"># fetch and normalize the payload</span>
+<span class="kw-d">def</span> <span class="fn-d">load_config</span>(path: <span class="ty-d">str</span>) <span class="op-d">-></span> <span class="ty-d">dict</span>:
+    <span class="kw-d">with</span> open(path) <span class="kw-d">as</span> f:
+        data <span class="op-d">=</span> json.load(f)
+    <span class="kw-d">return</span> {<span class="str-d">"count"</span>: <span class="num-d">42</span>, <span class="str-d">"name"</span>: data[<span class="str-d">"name"</span>]}</pre>
+    <table class="contrast">
+      <tr><th>token</th><th>hex</th><th>contrast vs code-bg</th></tr>
+      <tr><td>red</td><td>#d9846f</td><td class="ok">5.57</td></tr>
+      <tr><td>orange</td><td>#d3a066</td><td class="ok">6.70</td></tr>
+      <tr><td>yellow</td><td>#cbb573</td><td class="ok">7.74</td></tr>
+      <tr><td>green</td><td>#a3b088</td><td class="ok">6.79</td></tr>
+      <tr><td>aqua</td><td>#8fb0a0</td><td class="ok">6.62</td></tr>
+      <tr><td>blue</td><td>#83a6c4</td><td class="ok">6.12</td></tr>
+      <tr><td>purple</td><td>#b39bcf</td><td class="ok">6.34</td></tr>
+      <tr><td>comment</td><td>#a39a8c</td><td class="ok">5.63</td></tr>
+    </table>
+  </div>
+
+  <div class="pane light">
+    <h2>Light — "Washi"</h2>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:var(--sh-l-bg0)"></div>bg0</div>
+      <div class="swatch"><div class="chip" style="background:var(--sh-l-bg1)"></div>bg1</div>
+      <div class="swatch"><div class="chip" style="background:var(--sh-l-fg)"></div>fg</div>
+      <div class="swatch"><div class="chip" style="background:var(--sh-l-red)"></div>red</div>
+      <div class="swatch"><div class="chip" style="background:var(--sh-l-orange)"></div>orange</div>
+      <div class="swatch"><div class="chip" style="background:var(--sh-l-yellow)"></div>yellow</div>
+      <div class="swatch"><div class="chip" style="background:var(--sh-l-green)"></div>green</div>
+      <div class="swatch"><div class="chip" style="background:var(--sh-l-aqua)"></div>aqua</div>
+      <div class="swatch"><div class="chip" style="background:var(--sh-l-blue)"></div>blue</div>
+      <div class="swatch"><div class="chip" style="background:var(--sh-l-purple)"></div>purple</div>
+    </div>
+    <p>Body text and a <a class="link-l" href="#">sample link, hover me</a>.</p>
+    <pre><span class="cm-l"># fetch and normalize the payload</span>
+<span class="kw-l">def</span> <span class="fn-l">load_config</span>(path: <span class="ty-l">str</span>) <span class="op-l">-></span> <span class="ty-l">dict</span>:
+    <span class="kw-l">with</span> open(path) <span class="kw-l">as</span> f:
+        data <span class="op-l">=</span> json.load(f)
+    <span class="kw-l">return</span> {<span class="str-l">"count"</span>: <span class="num-l">42</span>, <span class="str-l">"name"</span>: data[<span class="str-l">"name"</span>]}</pre>
+    <table class="contrast">
+      <tr><th>token</th><th>hex</th><th>contrast vs code-bg</th></tr>
+      <tr><td>red</td><td>#a24632</td><td class="ok">5.02</td></tr>
+      <tr><td>orange</td><td>#805c1c</td><td class="ok">5.01</td></tr>
+      <tr><td>yellow</td><td>#71621b</td><td class="ok">5.01</td></tr>
+      <tr><td>green</td><td>#546935</td><td class="ok">5.04</td></tr>
+      <tr><td>aqua</td><td>#336c64</td><td class="ok">5.01</td></tr>
+      <tr><td>blue</td><td>#37648a</td><td class="ok">5.18</td></tr>
+      <tr><td>purple</td><td>#725693</td><td class="ok">5.01</td></tr>
+      <tr><td>comment</td><td>#656355</td><td class="ok">5.01</td></tr>
+    </table>
+  </div>
+</div>

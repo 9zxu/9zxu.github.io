@@ -160,6 +160,10 @@ Two variants, keyed off `:root` vs `:root[data-theme='light']`, exactly like Eve
 > [!TIP]
 > Every light-theme accent above is tuned to land at roughly **5:1 contrast** against the code-block background — checked with the actual relative-luminance formula, not eyeballed. The dark theme was never the problem; its accents naturally sit at 5.5–7.7:1 without any adjustment.
 
+Here's the actual proposal page I built while designing this — swatches, a mock code block in both themes, and the measured contrast ratios per color:
+
+<iframe src="/shibui-preview.html" style="width:100%; height:640px; border:1px solid var(--color-border); border-radius:8px;" loading="lazy" title="Shibui palette proposal"></iframe>
+
 A couple of small details that make the theme feel coherent rather than just "recolored":
 
 - **Theme-switch transitions are global**, not just on `body` — every element transitions `background-color`/`border-color`/`color` over 0.15s, so toggling dark/light fades uniformly instead of some elements snapping instantly while others fade.
