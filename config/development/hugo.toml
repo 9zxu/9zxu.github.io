@@ -1,0 +1,31 @@
+# Local-only override: while running `hugo server`, read posts live from the
+# Obsidian vault instead of the git-tracked copy in content/posts/, so edits
+# in Obsidian show up immediately without needing scripts/sync-posts.sh first.
+#
+# Declaring any module mount disables Hugo's implicit default mounts for this
+# module, so the usual directories must be re-declared explicitly too.
+[module]
+  [[module.mounts]]
+    source = 'content'
+    target = 'content'
+  [[module.mounts]]
+    source = '/Users/grace/Vaults/CS/blog'
+    target = 'content/posts'
+  [[module.mounts]]
+    source = 'static'
+    target = 'static'
+  [[module.mounts]]
+    source = 'layouts'
+    target = 'layouts'
+  [[module.mounts]]
+    source = 'data'
+    target = 'data'
+  [[module.mounts]]
+    source = 'assets'
+    target = 'assets'
+  [[module.mounts]]
+    source = 'i18n'
+    target = 'i18n'
+  [[module.mounts]]
+    source = 'archetypes'
+    target = 'archetypes'

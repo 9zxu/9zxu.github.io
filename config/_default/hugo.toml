@@ -1,0 +1,42 @@
+baseURL = 'https://9zxu.github.io/'
+locale = 'en-us'
+title = "zxu's home"
+theme = 'sumi-washi'
+
+[params]
+  githubUsername = '9zxu'
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+
+[menus]
+  [[menus.main]]
+    name = 'Home'
+    pageRef = '/'
+    weight = 10
+
+  [[menus.main]]
+    name = 'Posts'
+    pageRef = '/posts'
+    weight = 20
+
+[markup.highlight]
+  noClasses = false
+  lineNos = false
+  tabWidth = 2
+
+[markup.goldmark.parser.attribute]
+  block = true
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+# Leaves math delimiters untouched so LaTeX (e.g. "v_1...v_m") isn't mangled
+# by Markdown parsing (italics from "_", ellipsis from "...", etc.) before
+# KaTeX ever sees it.
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['\[', '\]'], ['$$', '$$']]
+    inline = [['\(', '\)'], ['$', '$']]
