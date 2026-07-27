@@ -3,6 +3,11 @@ locale = 'en-us'
 title = "zxu's home"
 theme = 'sumi-washi'
 
+# Obsidian's Templater plugin needs a real, visible vault folder to store
+# templates in — but the vault root IS content/posts/, so without this the
+# folder would get built as a page. Kept out of git via .gitignore too.
+ignoreFiles = ['/posts/Templates/']
+
 [params]
   githubUsername = '9zxu'
 

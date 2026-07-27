@@ -3,7 +3,7 @@ date: '2026-01-04T00:00:00+08:00'
 draft: false
 title: 'Git CLI'
 categories: ['Note']
-tags: ['Git', 'CLI', 'SSH', 'GitHub']
+tags: ['git', 'cli', 'ssh', 'github']
 ---
 
 # 基本工作流程
