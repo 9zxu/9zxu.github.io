@@ -167,17 +167,11 @@ A couple of small details that make the theme feel coherent rather than just "re
 
 ## 5. Deploying to GitHub Pages
 
-GitHub Actions runs on a fresh Ubuntu VM with no access to my Mac or the Obsidian vault, so the module-mount trick from section 2 only works for local `hugo server`. Config is split by environment:
-
-- `config/_default/hugo.toml` — no vault mount; `content/posts` is a real, git-tracked directory
-- `config/development/hugo.toml` — overrides the mount back to the vault, applied automatically whenever `hugo server` runs (Hugo defaults to the `development` environment for `server`, `production` for `build`)
-
 ### Publish
 
-Publishing a post is now an explicit step, not automatic:
+`content/posts/` is a real, git-tracked directory — the same folder Obsidian edits directly — so publishing a post is just a normal commit:
 
 ```bash
-./scripts/sync-posts.sh    # rsync mirror: vault -> content/posts/
 git status content/posts   # review what changed
 git add content/posts
 git commit -m "..."
