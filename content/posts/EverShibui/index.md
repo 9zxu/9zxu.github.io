@@ -1,6 +1,6 @@
 ---
 date: 2026-07-27T12:32:05+08:00
-draft: true
+draft: false
 title: EverShibui
 categories:
   - Note
@@ -29,7 +29,7 @@ This theme applies *shibui* (渋い), the Japanese aesthetic idea of quiet, unde
 ## Theme structure & conventions
 
 ```
-themes/sumi-washi/
+themes/evershibui/
 ├── layouts/
 │   ├── baseof.html          # <html> skeleton: topbar, sidebar, content column, footer
 │   ├── home.html            # "define main" for the home page
@@ -118,7 +118,7 @@ Here's the actual proposal page I built while designing this: swatches, a mock c
 
 
 
-<iframe src="/shibui-preview.html" style="width:100%; height:640px; border:1px solid var(--color-border); border-radius:8px;" loading="lazy" title="Shibui palette proposal"></iframe>
+<iframe src="/shibui-preview.html" style="width:100%; height:640px; border:1px solid var(--color-border); border-radius:8px;" loading="lazy" title="Muted palette proposal"></iframe>
 
 A couple of small details that make the theme feel coherent rather than just "recolored":
 
