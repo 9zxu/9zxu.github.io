@@ -1,9 +1,11 @@
 ---
-date: '2025-12-01T00:00:00+08:00'
+date: 2025-12-01T00:00:00+08:00
 draft: false
-title: 'Linear Algebra'
-categories: ['Note']
-tags: ['linear-algebra', 'math']
+title: Linear Algebra
+categories:
+tags:
+  - linear-algebra
+  - math
 math: true
 ---
 

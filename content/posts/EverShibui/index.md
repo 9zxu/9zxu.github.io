@@ -1,26 +1,30 @@
+---
+date: 2026-07-27T12:32:05+08:00
+draft: true
+title: EverShibui
+categories:
+  - Note
+tags:
+  - hugo
+  - theme
+  - css
+description: "EverShibui: a minimal Hugo theme, Everforest-based, with layout and colorscheme both shaped by the shibui aesthetic."
+math: false
+---
 
 This theme is inspired by:
 - [Everforest](https://github.com/sainnhe/everforest)
 - [Obsidian Baseline](https://github.com/aaaaalexis/obsidian-baseline)
 - [Hugo Shibui](https://github.com/ntk148v/shibui)
 
-# Evershibui
-
-The spirit inside this design is to create a comfortable reading experience. Applying the spirit of japanese shibui to design a minimal layout. The color scheme is based on everforest. 
-The base of this color theme is everforest, a eye-friendly comfortable color scheme. And further extends with the japanese shibui idea to create a minimal, useful, delightful layout, navigating experience.
+This theme applies *shibui* (渋い), the Japanese aesthetic idea of quiet, understated beauty, to two things: the layout and the colorscheme. The layout stays minimal and functional, for a comfortable reading experience. The colorscheme starts from Everforest's eye-friendly base, then gets re-tuned toward that same quiet, muted feel.
 
 ## Performance
-1. [Performance result](https://pagespeed.web.dev/analysis/https-9zxu-github-io-posts-hugo/sjl9pjwd89?form_factor=mobile "Performance result
-    (https://pagespeed.web.dev/analysis/https-9zxu-github-io-posts-hugo/sjl9pjwd89?form_factor=mobile)") on [this page](https://9zxu.github.io/posts/hugo/ "this page
-    (https://9zxu.github.io/posts/hugo/)") (there is an inline html render)
-    
-2. This is a minimal-everforest-shibui theme
-    
-3. The Klatex support [demo](https://9zxu.github.io/posts/linear-algebra/ "demo
-    (https://9zxu.github.io/posts/linear-algebra/)") on linear algebra.
-    
-4. The image test is available [here](https://9zxu.github.io/posts/git-collaborate-tutorial/ "here
-    (https://9zxu.github.io/posts/git-collaborate-tutorial/)").
+1. [Performance result](https://pagespeed.web.dev/analysis/https-9zxu-github-io-posts-hugo/sjl9pjwd89?form_factor=mobile) on [the Hugo setup post](https://9zxu.github.io/posts/hugo/).
+
+2. The KaTeX support [demo](https://9zxu.github.io/posts/linear-algebra/) on linear algebra.
+
+3. The image test is available [here](https://9zxu.github.io/posts/git-collaborate-tutorial/).
 
 ## Theme structure & conventions
 
@@ -68,12 +72,12 @@ themes/sumi-washi/
 - **`.Kind`-gated layout.** The left sidebar (page outline) only renders `{{ if eq .Kind "page" }}`, i.e. on individual posts. So the home page, post list, and taxonomy pages collapse to a single centered column (`.shell--no-sidebar`) instead of showing an empty rail.
 - **Render hooks over string-matching.** GitHub-style `> [!TIP]` alerts are handled by Hugo's native blockquote render hook (`.Type == "alert"`, `.AlertType`), not regex against the raw text.
 
-## The Shibui color system
+## Applying shibui to the colorscheme
 
-The theme started on the [Everforest](https://github.com/sainnhe/everforest) colorscheme, but its light-theme accent colors turned out too low-contrast for real reading (several syntax colors measured under 3:1 against the code background, and WCAG AA wants 4.5:1). Rather than patch individual colors, I designed a full replacement palette: **Shibui** (渋い), a quiet, muted ink-and-paper aesthetic instead of a saturated one. The old Everforest values are kept, unused, in `_palette-everforest.css` for reference.
+The theme started on the [Everforest](https://github.com/sainnhe/everforest) colorscheme, but its light-theme accent colors turned out too low-contrast for real reading (several syntax colors measured under 3:1 against the code background, and WCAG AA wants 4.5:1). Rather than patch individual colors, I re-tuned the full palette following the same shibui (渋い) idea as the layout: quiet, muted ink-and-paper tones instead of saturated ones. The old Everforest values are kept, unused, in `_palette-everforest.css` for reference.
 
 > [!NOTE]
-> The name (and general "quiet, muted" direction) was also inspired by the existing [Shibui Hugo theme](https://themes.gohugo.io/themes/shibui/). This palette and that theme are unrelated in code, but credit where it's due for the name.
+> The [Hugo Shibui theme](https://themes.gohugo.io/themes/shibui/) draws on this same shibui aesthetic, independently of this project. No code or palette is shared between them. "Shibui" here names a design idea, not a component borrowed from that theme.
 
 Two variants, keyed off `:root` vs `:root[data-theme='light']`, exactly like Everforest was:
 

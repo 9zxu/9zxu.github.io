@@ -1,9 +1,12 @@
 ---
-date: '2025-11-29T00:00:00+08:00'
+date: 2025-11-29T00:00:00+08:00
 draft: false
-title: 'Create Static Website with GitPage and Jekyll'
-categories: ['Note']
-tags: ['jekyll', 'github-pages', 'web']
+title: Create Static Website with GitPage and Jekyll
+categories:
+tags:
+  - jekyll
+  - github-pages
+  - web
 ---
 
 - The theme: [chirpy](https://chirpy.cotes.page)
