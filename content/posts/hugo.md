@@ -43,25 +43,7 @@ Delete the scaffold's placeholder demo content (`themes/<name>/content/`) if you
 
 ## 2. Daily content workflow with Obsidian
 
-I write posts in Obsidian, not by hand-editing files in this repo. The setup:
-
-- Posts physically live in `$HOME/Vaults/CS/blog/`, a subfolder of my existing Obsidian vault — **not** inside the Hugo repo at all.
-- Hugo is pointed at that folder via a **module mount** in `hugo.toml`, not a symlink:
-
-```toml
-[module]
-  [[module.mounts]]
-    source = 'content'
-    target = 'content'
-  [[module.mounts]]
-    source = '/Users/grace/Vaults/CS/blog'
-    target = 'content/posts'
-  # ...the other default mounts (static, layouts, data, assets, i18n,
-  # archetypes) must be re-declared too, once any mount is declared explicitly.
-```
-
-> [!WARNING]
-> I tried a plain OS symlink first (`ln -s ~/Vaults/CS/blog content/posts`) — it looked right in the shell, but Hugo silently does not walk symlinked *directories* placed directly under `content/`. Zero posts built, no error. Module mounts are the actual supported mechanism for pulling content from outside the project directory, and `hugo server`'s file watcher follows them correctly for live reload.
+I write posts in Obsidian, not by hand-editing files by other means. The vault is opened directly on `content/posts/` inside this repo — no separate vault folder, no module mount. Obsidian's default attachment location is set to "Same folder as current file", so pasted images land straight in the right post bundle.
 
 **Front matter format:** Obsidian's Properties panel only reads and writes YAML front matter (`---`), never TOML (`+++`). Since Hugo supports both natively — it auto-detects the delimiter per file — the fix is on the Hugo side: every post uses YAML, and the theme's archetype (`archetypes/default.md`) was updated to generate YAML too, so new notes created from Obsidian or via `hugo new` are consistent:
 
@@ -75,6 +57,16 @@ title: '{{ replace .File.ContentBaseName "-" " " | title }}'
 
 
 One caveat worth knowing: Obsidian-only syntax (`[[wikilinks]]`, `![[embeds]]`) doesn't mean anything to Hugo's Markdown renderer, so links from a post into other (unpublished) vault notes just render as broken literal text. Practice is to inline the relevant content into the post itself rather than link out of `blog/`.
+
+**Images: page bundles, created from the start.** Every post with images is created as a leaf bundle, not a flat file:
+
+```bash
+hugo new posts/my-new-post/index.md
+```
+
+This gives a `my-new-post/` folder with `index.md` inside it, generated from `archetypes/default.md`. Images then get dropped straight into that same folder and referenced by filename — `![alt](photo.png)` — instead of living under a separate `static/images/<slug>/` tree with absolute paths. That keeps a post and its assets as one movable unit, and is also why Obsidian's "default location for new attachments" is set to "Same folder as current file": screenshots pasted while editing `index.md` land next to it automatically, no manual sorting after the fact.
+
+A post started the old way (flat `<slug>.md` + `static/images/<slug>/`) still works, but has to be converted by hand — `mkdir` the bundle folder, `git mv` the `.md` in as `index.md`, `git mv` each image in alongside it, then strip the `/images/<slug>/` prefix from the Markdown image links so they resolve as bundle-relative filenames.
 
 ## 3. Theme structure & conventions
 

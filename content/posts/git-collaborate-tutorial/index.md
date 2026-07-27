@@ -6,93 +6,108 @@ categories: ['Tutorial']
 tags: ['Git', 'GitHub', 'CLI', 'Collaboration']
 ---
 
-# github collaborate tutorial
+# GitHub 協作教學
 
-## How to collaborate
-- !!!切換branch一定要先commit或stash暫存目前的更改，不然會弄髒新的branch
+## 協作流程
 
-1. 開始實作新功能：建立一個新branch
+> ⚠️ 切換 branch 前務必先 `commit` 或 `stash`，暫存目前的修改，否則會把未完成的變更帶進新的 branch，弄髒它。
+
+### 1. 開始新功能：建立新 branch
 
 ```sh
-# create a new branch (but doesn't switch into it) if needed
+# 建立新 branch（但不會切換過去）
 git branch <branch-name>
-# switch into a new branch, commits must be done in the current branch
+# 切換到該 branch，之後的 commit 都會記錄在這裡
 git checkout <branch-name>
 
-# or
-# 建立並切換到新功能的 branch
+# 或者一次完成：建立並切換到新 branch
 git checkout -b <branch-name>
 ```
 
-2. 平常做完去睡覺之前
+### 2. 收工前先暫存進度
+
 ```sh
-# 暫存
-# . 是指目前資料夾的意思
+# 加入暫存區（. 代表目前資料夾下的所有變更）
 git add .
-# 確認目前工作區
+# 確認目前工作區狀態
 git status
 ```
-- `add` 之後會變成綠色
-- 還沒 `add` 的是黃色
 
-![git status showing staged files in green, unstaged in yellow](/images/git-collaborate-tutorial/0_status-file-explore.png)
+- 已經 `add` 的檔案顯示為綠色
+- 尚未 `add` 的檔案顯示為黃色
 
-3. 完成目前工作，合併進度
+![git status showing staged files in green, unstaged in yellow](0_status-file-explore.png)
+
+### 3. 完成工作，合併進度
 
 ```sh
 # 在你的功能 branch 上
 git add .
 
-# commit 當前工作
+# commit 目前的工作
 git commit -m "<這次改了什麼>"
 
-# 把最新 main 合進來（更新自己）
+# 拉取最新的 main，更新自己的 branch
 git pull origin main
 
-# 處理衝突 & 除錯
-# 修完後
+# 若有衝突，手動處理後再次 add 並 commit
 git add .
 git commit -m "fix conflicts and update"
 
-# 把你這個 branch 推上遠端
+# 把這個 branch 推上遠端
 git push origin <你的branch名字>
 ```
-!!!接下來去 GitHub 網頁開 Pull Request，請求merge到main
-![Opening a pull request on GitHub](/images/git-collaborate-tutorial/0_pull-request.png)
 
-4. 還沒完成目前工作，但要換到別的branch去修bug
+推送完成後，到 GitHub 網頁開一個 Pull Request，請求合併進 main。
+
+![Opening a pull request on GitHub](0_pull-request.png)
+
+### 4. 工作做到一半，臨時要切去修 bug
 
 ```sh
-# 暫存未完成的工作
+# 暫存尚未完成的工作
 git add .
 git stash
 
 # 切到修 bug 的 branch
 git checkout <bug-branch>
 
-# 修完 bug 後
+# 修完後 commit
 git add .
 git commit -m "bugfix..."
 
-# 這行你漏掉了，不 push 是沒人能看到 bug 修好了
+# 別忘了推上遠端，否則沒人知道 bug 已修好
 git push origin <bug-branch>
 
 # 回到原本的工作 branch
 git checkout <original-branch>
 
-# 把之前 stash 的未完成工作拿回來
+# 把剛才 stash 的進度還原回來
 git stash pop
 ```
 
-### How to start
-#### clone the repo
-- where is the link
-![Finding the repo's clone link on GitHub](/images/git-collaborate-tutorial/0_clone-link.png)
-- by command line
-![Cloning a repo via the command line](/images/git-collaborate-tutorial/0_clone-command.png)
-- in ide
-![Cloning a repo from within an IDE](/images/git-collaborate-tutorial/0_clone-ide.png)
-#### add source file
-- eg.template file
-![Adding a new source file](/images/git-collaborate-tutorial/0_add-file.png)
-![Committing the newly added file](/images/git-collaborate-tutorial/0_add-file-commit.png)
+## 新手上路
+
+### Clone 專案
+
+先在 GitHub 上找到 clone 連結：
+
+![Finding the repo's clone link on GitHub](0_clone-link.png)
+
+用命令列 clone：
+
+![Cloning a repo via the command line](0_clone-command.png)
+
+或是直接在 IDE 中 clone：
+
+![Cloning a repo from within an IDE](0_clone-ide.png)
+
+### 新增檔案
+
+以新增一個 template 檔案為例：
+
+![Adding a new source file](0_add-file.png)
+
+commit 新增的檔案：
+
+![Committing the newly added file](0_add-file-commit.png)
