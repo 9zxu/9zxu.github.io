@@ -35,9 +35,11 @@
 
 .shell {
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
+  grid-template-columns: auto minmax(0, 1fr);
   max-width: 1400px;
   margin: 0 auto;
+  /* Clip the drawer while it slides out; `clip` keeps the sidebar sticky. */
+  overflow-x: clip;
 }
 
 .shell--no-sidebar {
@@ -45,6 +47,7 @@
 }
 
 .sidebar {
+  width: 260px;
   border-right: 1px solid var(--color-border);
   padding: 1.5rem 1rem;
   align-self: start;
@@ -52,6 +55,17 @@
   top: 3.5rem;
   height: calc(100vh - 3.5rem);
   overflow-y: auto;
+  transition: margin-left 0.2s ease, transform 0.2s ease, visibility 0s,
+    background-color 0.15s ease, border-color 0.15s ease;
+}
+
+/* Desktop drawer: slide the sidebar out and let the content column take its space.
+   Visibility flips after the slide so hidden links drop out of the tab order. */
+.shell[data-sidebar-open='false'] .sidebar {
+  margin-left: -260px;
+  visibility: hidden;
+  transition: margin-left 0.2s ease, transform 0.2s ease, visibility 0s 0.2s,
+    background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .content-column {
@@ -109,10 +123,6 @@
   text-align: center;
 }
 
-.sidebar-toggle {
-  display: none;
-}
-
 @media (max-width: 900px) {
   .shell {
     grid-template-columns: 1fr;
@@ -123,12 +133,13 @@
     top: 3.5rem;
     left: 0;
     bottom: 0;
-    width: 260px;
     background: var(--color-bg);
     transform: translateX(-100%);
-    transition: transform 0.2s ease, background-color 0.15s ease,
-      border-color 0.15s ease;
     z-index: 15;
+  }
+
+  .shell[data-sidebar-open='false'] .sidebar {
+    margin-left: 0;
   }
 
   .shell[data-sidebar-open='true'] .sidebar {
@@ -155,8 +166,11 @@
   .content-column {
     padding: 2rem 1.25rem 3rem;
   }
+}
 
-  .sidebar-toggle {
-    display: inline-flex;
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .shell[data-sidebar-open='false'] .sidebar {
+    transition: none;
   }
 }

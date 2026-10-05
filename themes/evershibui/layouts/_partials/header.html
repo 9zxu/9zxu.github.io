@@ -1,6 +1,6 @@
-{{- /* Docs top bar: mobile sidebar toggle (post pages only), brand, theme toggle. */}}
+{{- /* Docs top bar: sidebar drawer toggle (post pages only), brand, theme toggle. */}}
 {{- if eq .Kind "page" }}
-  <button class="icon-btn sidebar-toggle" id="sidebar-toggle" type="button" aria-label="Toggle navigation" aria-controls="sidebar" aria-expanded="false">
+  <button class="icon-btn sidebar-toggle" id="sidebar-toggle" type="button" aria-label="Toggle page outline" aria-controls="sidebar" aria-expanded="false">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
   </button>
 {{- end }}

@@ -21,35 +21,45 @@
 
   if (shell && sidebar && sidebarToggle && !sidebarToggle.dataset.bound) {
     sidebarToggle.dataset.bound = 'true';
+    // Below this width the drawer overlays the content instead of pushing it.
+    var overlayQuery = window.matchMedia('(max-width: 900px)');
+    var isSidebarOpen = function () {
+      return shell.getAttribute('data-sidebar-open') === 'true';
+    };
     var setSidebarOpen = function (open) {
       shell.setAttribute('data-sidebar-open', String(open));
       sidebarToggle.setAttribute('aria-expanded', String(open));
     };
 
+    setSidebarOpen(isSidebarOpen());
+
     sidebarToggle.addEventListener('click', function (event) {
       event.stopPropagation();
-      var isOpen = shell.getAttribute('data-sidebar-open') === 'true';
-      setSidebarOpen(!isOpen);
+      setSidebarOpen(!isSidebarOpen());
     });
 
-    // Close when clicking outside the drawer (e.g. the backdrop).
+    // Crossing the breakpoint: overlay starts closed, desktop restores the page default.
+    overlayQuery.addEventListener('change', function (event) {
+      setSidebarOpen(!event.matches && shell.dataset.sidebarDefault === 'true');
+    });
+
+    // Close the overlay when clicking outside the drawer (e.g. the backdrop).
     document.addEventListener('click', function (event) {
-      var isOpen = shell.getAttribute('data-sidebar-open') === 'true';
-      if (isOpen && !sidebar.contains(event.target)) {
+      if (overlayQuery.matches && isSidebarOpen() && !sidebar.contains(event.target)) {
         setSidebarOpen(false);
       }
     });
 
-    // Close after following a link inside the drawer.
+    // Close the overlay after following a link inside the drawer.
     sidebar.addEventListener('click', function (event) {
-      if (event.target.closest('a')) {
+      if (overlayQuery.matches && event.target.closest('a')) {
         setSidebarOpen(false);
       }
     });
 
-    // Close on Escape.
+    // Close the overlay on Escape.
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') {
+      if (overlayQuery.matches && event.key === 'Escape') {
         setSidebarOpen(false);
       }
     });

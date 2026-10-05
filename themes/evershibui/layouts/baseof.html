@@ -19,7 +19,15 @@
     {{ partial "header.html" . }}
   </div>
   {{ $hasSidebar := eq .Kind "page" }}
-  <div class="shell{{ if not $hasSidebar }} shell--no-sidebar{{ end }}" data-sidebar-open="false">
+  {{- /* The outline drawer starts open only when the page has headings to list. */}}
+  {{ $sidebarDefault := cond (and $hasSidebar .Fragments.Headings) "true" "false" }}
+  <div class="shell{{ if not $hasSidebar }} shell--no-sidebar{{ end }}" data-sidebar-open="{{ $sidebarDefault }}" data-sidebar-default="{{ $sidebarDefault }}">
+    <script>
+      // On narrow screens the drawer overlays the content, so always start closed.
+      if (window.matchMedia('(max-width: 900px)').matches) {
+        document.currentScript.parentElement.setAttribute('data-sidebar-open', 'false');
+      }
+    </script>
     {{ if $hasSidebar }}
       <aside class="sidebar" id="sidebar">
         {{ partial "sidebar.html" . }}
