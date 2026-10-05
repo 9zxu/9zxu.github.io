@@ -46,7 +46,14 @@
 }
 
 /* Links light up as a filled box on hover / keyboard focus, like a selected link in NetNewsWire.
-   box-shadow widens the box without shifting the text. */
+   The radius lives on the resting state too, so the corners stay round while the background fades out. */
+.prose a,
+.home-link a {
+  border-radius: 2px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
 .prose a:hover,
 .prose a:focus-visible,
 .home-link a:hover,
@@ -54,11 +61,7 @@
   background: var(--color-link-hover);
   color: var(--color-bg);
   text-decoration: none;
-  border-radius: 3px;
-  box-shadow: 0 0 0 2px var(--color-link-hover);
   outline: none;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
 }
 
 .prose ul,
