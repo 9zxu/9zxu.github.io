@@ -32,7 +32,7 @@ This is a second paragraph, right after the first, so you can check the vertical
 
 You can also mix them: **bold with `inline code`** and *italic with a [link](https://gohugo.io)*.
 
-Here's a <sub>subscript</sub> and a <sup>superscript</sup>, plus a footnote reference.[^1]
+Here's a footnote reference to check baseline alignment of the marker.[^1]
 
 [^1]: This is the footnote content.
 
