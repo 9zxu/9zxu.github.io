@@ -45,6 +45,22 @@
   text-decoration-color: currentColor;
 }
 
+/* Links light up as a filled box on hover / keyboard focus, like a selected link in NetNewsWire.
+   box-shadow widens the box without shifting the text. */
+.prose a:hover,
+.prose a:focus-visible,
+.home-link a:hover,
+.home-link a:focus-visible {
+  background: var(--color-link-hover);
+  color: var(--color-bg);
+  text-decoration: none;
+  border-radius: 3px;
+  box-shadow: 0 0 0 2px var(--color-link-hover);
+  outline: none;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
 .prose ul,
 .prose ol {
   margin: 1rem 0;

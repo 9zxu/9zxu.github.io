@@ -8,8 +8,9 @@
   {{ end }}
 
   {{ with site.GetPage "/posts" }}
-    <p><a href="{{ .RelPermalink }}">Read my posts &rarr;</a></p>
+    <p class="home-link"><a href="{{ .RelPermalink }}">Read my posts &rarr;</a></p>
   {{ end }}
+  <p class="home-link"><a href="/news-digest/">Read my RSS &rarr;</a></p>
 
   {{ with site.GetPage "/tags" }}
     {{ with .Pages }}
